@@ -1,4 +1,4 @@
-
+﻿
 using System.Text;
 
 namespace lesson_5;
@@ -108,25 +108,50 @@ class Program
 
     static void RemoveTaskCommand()
     {
+
+        if (!CheckTasks())
+        {
+            return;
+        }
+
         Console.WriteLine("Вот ваш список задач:");
         ShowTasks();
         Console.Write("Введите номер задачи для удаления: ");
 
         var isNumber = int.TryParse(Console.ReadLine(), out int index);
 
-        if (isNumber)
+        if (!isNumber || index > tasks.Count)
         {
-            var task = tasks[index - 1];
-
-            tasks.RemoveAt(index - 1);
-            Console.WriteLine($"Задача \"{task}\" удалена.");
+            Console.WriteLine("ВВеден неверный номер задачи");
         }
+
+
+        var task = tasks[index - 1];
+
+        tasks.RemoveAt(index - 1);
+        Console.WriteLine($"Задача \"{task}\" удалена.");
+
 
 
     }
 
+    static bool CheckTasks()
+    {
+        if (tasks.Count == 0)
+        {
+            Console.WriteLine($"Список задач пуст");
+        }
+
+        return tasks.Count != 0;
+    }
+
     static void ShowTasks()
     {
+        if (!CheckTasks())
+        {
+            return;
+        }
+
         for (int i = 0; i < tasks.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {tasks[i]}");
