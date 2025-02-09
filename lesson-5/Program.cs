@@ -77,6 +77,9 @@ class Program
         Console.WriteLine("/start - ввести имя");
         Console.WriteLine("/info - информация о программе");
         Console.WriteLine("/help - получить информацию о командах");
+        Console.WriteLine("/addtask - добавление задачи");
+        Console.WriteLine("/removetask - удаление задачи");
+        Console.WriteLine("/showtasks - список задач");
         if (userName != null) { Console.WriteLine("/echo - возвращает введенный текст"); }
         Console.WriteLine("/exit - выход из приложения");
     }
