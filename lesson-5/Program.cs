@@ -126,6 +126,7 @@ class Program
         if (!isNumber || index > tasks.Count)
         {
             Console.WriteLine("ВВеден неверный номер задачи");
+            return;
         }
 
 
